@@ -1,3 +1,9 @@
+// Sticky navbar 
+let header = document.querySelector("header")
+window.addEventListener('scroll', () => {
+  header.classList.toggle('sticky', window.scrollY > 0);
+});
+
 // menu bar 
 let menu = document.getElementById("menu-bar");
 let navbar = document.querySelector(".navbar");
@@ -26,23 +32,37 @@ next.onclick = () => {
   slides[index].classList.add("active");
 }
 
+// cart ccounter 
+let cartBtns = document.querySelectorAll(".cart");
+let cartCounter = document.getElementById("cart-counter");
+let cartIcon = document.querySelector("header .icons").firstElementChild;
+let cCounter = 0;
+cartBtns.forEach((btn) => {
+  btn.onclick = (e) => {
+    cartCounter.innerHTML = ++cCounter;
+    e.preventDefault();
+    if(cCounter !== "0") {
+      cartCounter.style.display ="block";
+      cartIcon.style.color = "var(--primary-color)";
+    }
+  }
+})
 
 // featured products 
-document.querySelectorAll(".featured-image-1").forEach(image_1 => {
-  image_1.addEventListener("click", () => {
-    let imageSrc = image_1.getAttribute("src");
-    document.querySelector(".main-image-1").src = imageSrc;
+function viewImage(featuredImages, mainImage) {
+  document.querySelectorAll(featuredImages).forEach(image => {
+    image.addEventListener("click", () => {
+      let imageSrc = image.getAttribute("src");
+      document.querySelector(mainImage).src = imageSrc;
+    })
   })
-})
-document.querySelectorAll(".featured-image-2").forEach(image_2 => {
-  image_2.addEventListener("click", () => {
-    let imageSrc = image_2.getAttribute("src");
-    document.querySelector(".main-image-2").src = imageSrc;
-  })
-})
-document.querySelectorAll(".featured-image-3").forEach(image_3 => {
-  image_3.addEventListener("click", () => {
-    let imageSrc = image_3.getAttribute("src");
-    document.querySelector(".main-image-3").src = imageSrc;
-  })
-})
+}
+viewImage(".featured-image-1", ".main-image-1")
+viewImage(".featured-image-2", ".main-image-2")
+viewImage(".featured-image-3", ".main-image-3")
+
+
+// footer 
+let year = new Date().getFullYear();
+let footerYear = document.querySelector(".credit").lastElementChild;
+footerYear.innerHTML = year;

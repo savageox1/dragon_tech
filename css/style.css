@@ -23,6 +23,15 @@ html {
   scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #e4e3e3;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 6px;
+}
+
 section {
   padding: 2rem 9% 0;
 }
@@ -71,7 +80,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.089);
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.041);
+}
+
+header.sticky {
+  background-color: #ffffff93;
+  backdrop-filter: blur(3rem);
 }
 
 header .logo img {
@@ -89,13 +103,26 @@ header .navbar a:hover {
 }
 
 header .icons a {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--black);
-  margin-left: 1.6rem;
+  margin-left: 1.8rem;
+  position: relative;
 }
 
 header .icons a:hover {
   color: var(--primary-color);
+}
+
+header .icons a span {
+  background-color: red;
+  padding: .3rem .3rem;
+  color: #fff;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  position: absolute;
+  top: -1.0rem;
+  left: 1.6rem;
+  display: none;
 }
 
 #menu-bar {
@@ -290,7 +317,7 @@ header .icons a:hover {
   height: 4.5rem;
   width: 5rem;
   line-height: 4.5rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--black);
   border: .1rem solid var(--black);
   border-radius: .5rem;
@@ -484,7 +511,8 @@ header .icons a:hover {
 }
 
 .newsletter .content form input[type="email"] {
-  flex: 1; /* يجعل الحقل يأخذ كل العرض المتاح */
+  flex: 1;
+  /* يجعل الحقل يأخذ كل العرض المتاح */
   font-size: 1.7rem;
   text-transform: none;
   color: #333;
@@ -512,15 +540,21 @@ header .icons a:hover {
 .footer .box-container .box {
   flex: 1 1 20rem;
 }
+
 .footer .box-container .box h3 {
   color: var(--black);
   font-size: 1.7rem;
 }
+
+.footer .box-container .box i {
+  margin-right: .5rem;
+}
+
 .footer .box-container .box a {
   color: #666;
   font-size: 1.5rem;
   display: block;
-  margin-top: .5rem;
+  margin-top: 1rem;
 }
 
 .footer .box-container .box a:hover {
@@ -537,7 +571,7 @@ header .icons a:hover {
   color: #999;
 }
 
-.footer .box-container .credit span {
+.footer .box-container .credit span:first-child {
   color: var(--primary-color);
 }
 
